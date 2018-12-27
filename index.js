@@ -4,6 +4,7 @@ const fs = require("fs");
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
 const prefix = "f!"
+const token = process.env.TOKEN
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const youtube = new YouTube("AIzaSyAlP12UFtynoOijWpkp688IUP0P1PWnFqA");
@@ -121,9 +122,9 @@ bot.on('message', async message => {
 					var videos = await youtube.searchVideos(searchString, 10);
 					var index = 0;
 					message.channel.send(`
-__**Song selection:**__
+__**Sélection de musique:**__
 ${videos.map(video2 => `**${++index} -** ${video2.title}`).join('\n')}
-Please provide a value to select one of the search results ranging from 1-10.
+Veuillez fournir une valeur pour sélectionner l'un des résultats de recherche allant de 1 à 10.
 					`);
 					// eslint-disable-next-line max-depth
 					try {
@@ -262,6 +263,6 @@ async function handleVideo(video, message, voiceChannel, playlist = false) {
 }
 });
 
-bot.login(process.env.TOKEN)
+bot.login(token)
 
 

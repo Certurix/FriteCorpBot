@@ -22,7 +22,10 @@
   "dependencies": {
     "discord.js": "^11.4.2",
     "ffmpeg-binaries": "^4.0.0",
+    "fortnite": "^4.1.1",
     "fs": "0.0.1-security",
+    "moment": "^2.23.0",
+    "moment-duration-format": "^2.2.2",
     "opusscript": "0.0.6",
     "os": "^0.1.1",
     "simple-youtube-api": "^5.1.1",

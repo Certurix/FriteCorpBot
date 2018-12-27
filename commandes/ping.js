@@ -16,7 +16,7 @@ let APImsg = ""
         diffmsg = "Very Good"
     }
 
-    if(diff > 300) {
+    if(diff > 200) {
         diffmsg = "Good"
     }
     
@@ -34,7 +34,7 @@ let APImsg = ""
         APImsg = "Very Good"
     }
 
-    if(API > 300) {
+    if(API > 200) {
         APImsg = "Good"
     }
     
