@@ -81,5 +81,5 @@ exports.run = async (client, message, args, ops, func) => {
 }
 
 module.exports.help = {
-name = "userinfo"
+name: "userinfo"
 }
