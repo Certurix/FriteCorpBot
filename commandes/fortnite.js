@@ -14,11 +14,11 @@ module.exports.run = async (bot, message, args) => {
         let lifetime = stats.lifetime;
 
         let score = lifetime[6]['Score'];
-        let mplayed = lifetime[7]['Matchs joués'];
-        let wins = lifetime[8]['Victoires'];
-        let winper = lifetime[9]['Victoires %'];
+        let mplayed = lifetime[7]['Matches Played'];
+        let wins = lifetime[8]['Wins'];
+        let winper = lifetime[9]['Win%'];
         let kills = lifetime[10]['Kills'];
-        let kd = lifetime[11]['Ratio'];
+        let kd = lifetime[11]['K/d'];
         let embed = new Discord.RichEmbed()
         .setTitle("Lifetime Stats")
         .setAuthor(data.username)
