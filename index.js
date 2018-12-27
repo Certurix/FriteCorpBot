@@ -4,7 +4,6 @@ const fs = require("fs");
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
 const prefix = "f!"
-const token = "NTI1Mzc3ODIwNTM3NTIwMTM4.Dv1wBg.9GuOY30r7hrp-INjgXrZjXHQ-oQ"/*process.env.TOKEN*/
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const youtube = new YouTube("AIzaSyAlP12UFtynoOijWpkp688IUP0P1PWnFqA");
@@ -263,6 +262,6 @@ async function handleVideo(video, message, voiceChannel, playlist = false) {
 }
 });
 
-bot.login(token)
+bot.login(process.env.TOKEN)
 
 
