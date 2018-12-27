@@ -235,7 +235,7 @@ async function handleVideo(video, message, voiceChannel, playlist = false) {
 		serverQueue.songs.push(song);
 		console.log(serverQueue.songs);
 		if (playlist) return undefined;
-		else return message.channel.send(`✅ **${song.title}** has been added to the queue!`);
+		else return message.channel.send(`✅ **${song.title}** à été ajouté à la liste d'attente`);
 	}
 	return undefined;
 }
@@ -251,7 +251,7 @@ async function handleVideo(video, message, voiceChannel, playlist = false) {
 
 	const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
 		.on('end', reason => {
-      message.channel.send('``The queue of song is end.``');
+      message.channel.send('File d\'attente terminée.');
 			if (reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
 			else console.log(reason);
 			serverQueue.songs.shift();
@@ -260,7 +260,7 @@ async function handleVideo(video, message, voiceChannel, playlist = false) {
 		.on('error', error => console.error(error));
 	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
 
-	serverQueue.textChannel.send(`🎶 Start playing: **${song.title}**`);
+	serverQueue.textChannel.send(`🎶 Lecture de **${song.title}** lancée.`);
 }
 });
 
