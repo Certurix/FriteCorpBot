@@ -39,7 +39,7 @@ module.exports.run = async (client, message, args, ops, func) => {
         return game;
     }
     //Discord rich embed
-    if (user === func.autouser(message, args.join(" ")) || message.guild.members.get(args[0])) {
+    if (message.guild.members.get(args[0])) {
         const embed = new Discord.MessageEmbed()
             .setColor('#36393e')
             .setThumbnail(user.user.displayAvatarURL())
