@@ -9,21 +9,6 @@ const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const youtube = new YouTube("AIzaSyAlP12UFtynoOijWpkp688IUP0P1PWnFqA");
 const queue = new Map();
-var Steam = require('steam');
-
-
-// Steam
-
-var steamClient = new Steam.SteamClient();
-var steamUser = new Steam.SteamUser(steamClient);
-
-steamClient.connect();
-steamClient.on('connected', function() {
-  steamUser.logOn({
-    account_name: 'anonymously'
-  });
-});
-steamClient.on('logOnResponse', function() { /* ... */});
 
 
 // On charge les commandes ICI
