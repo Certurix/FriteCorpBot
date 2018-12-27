@@ -19,13 +19,13 @@ module.exports.run = async (client, message, args, ops, func) => {
 
         let bot;
         if (user != func.autouser(message, args.join(" "))) {
-            if (user.bot === true) bot = "Yes";
-            else bot = "No";
+            if (user.bot === true) bot = "Oui";
+            else bot = "Non";
 
             return bot;
         } else {
-            if (user.user.bot === true) bot = "Yes";
-            else bot = "No";
+            if (user.user.bot === true) bot = "Oui";
+            else bot = "Non";
 
             return bot;
         }
@@ -35,7 +35,7 @@ module.exports.run = async (client, message, args, ops, func) => {
     function game() {
         let game;
         if (user.presence.activity !== null) game = user.presence.activity.name
-        else game = "None";
+        else game = "Aucun";
         return game;
     }
     //Discord rich embed
@@ -45,15 +45,15 @@ module.exports.run = async (client, message, args, ops, func) => {
             .setThumbnail(user.user.displayAvatarURL())
             .setAuthor(`${user.user.username}#${user.user.discriminator}`, user.user.displayAvatarURL())
             .addField("ID:", `${user.user.id}`, true)
-            .addField("Nickname:", `${member.nickname || 'None'}`, true)
+            .addField("Surnom:", `${member.nickname || 'Aucun'}`, true)
             .addField("Status:", status(), true)
             .addField("Bot:", `${isBot()}`, true)
-            .addField("Game", game(), true)
-            .addField("Created At" + ` (${moment(user.user.createdAt, "dd").fromNow()})`, `${moment.utc(user.user.createdAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`, false)
-            .addField("Joined Server" + ` (${moment(member.joinedAt, "dd").fromNow()})`, `${moment.utc(member.joinedAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`, false)
-            .addField("Highest Role", member.user.highestRole, true)
-            .addField("Roles:", member.roles.map(roles => `${roles.name}`).join(', '), true)
-            .setFooter(`Replying to ${message.author.username}#${message.author.discriminator}`, message.author.displayAvatarURL())
+            .addField("Jeu", game(), true)
+            .addField("Créé le" + ` (${moment(user.user.createdAt, "dd").fromNow()})`, `${moment.utc(user.user.createdAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`, false)
+            .addField("Rejoint le" + ` (${moment(member.joinedAt, "dd").fromNow()})`, `${moment.utc(member.joinedAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`, false)
+            .addField("Rôle le plus haut", member.user.highestRole, true)
+            .addField("Rôles:", member.roles.map(roles => `${roles.name}`).join(', '), true)
+            .setFooter(`Répondre à ${message.author.username}#${message.author.discriminator}`, message.author.displayAvatarURL())
         message.channel.send({
             embed
         });
@@ -63,21 +63,19 @@ module.exports.run = async (client, message, args, ops, func) => {
             .setThumbnail(user.displayAvatarURL())
             .setAuthor(`${user.username}#${user.discriminator}`, user.displayAvatarURL())
             .addField("ID:", `${user.id}`, true)
-            .addField("Nickname:", `${member.nickname || 'None'}`, true)
+            .addField("Surnom:", `${member.nickname || 'Aucun'}`, true)
             .addField("Status:", status(), true)
             .addField("Bot:", `${isBot()}`, true)
-            .addField("Game", game(), true)
-            .addField("Created At" + ` (${moment(user.createdAt, "dd").fromNow()})`, `${moment.utc(user.createdAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`, false)
-            .addField("Joined Server" + ` (${moment(member.joinedAt, "dd").fromNow()})`, `${moment.utc(member.joinedAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`, false)
-            .addField("Highest Role", member.highestRole, true)
-            .addField("Roles:", member.roles.map(roles => `${roles.name}`).join(', '), true)
-            .setFooter(`Replying to ${message.author.username}#${message.author.discriminator}`, message.author.displayAvatarURL())
+            .addField("Jeu", game(), true)
+            .addField("Créé le" + ` (${moment(user.createdAt, "dd").fromNow()})`, `${moment.utc(user.createdAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`, false)
+            .addField("Rejoint le" + ` (${moment(member.joinedAt, "dd").fromNow()})`, `${moment.utc(member.joinedAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`, false)
+            .addField("Rôle le plus haut", member.highestRole, true)
+            .addField("Rôles:", member.roles.map(roles => `${roles.name}`).join(', '), true)
+            .setFooter(`Répondre à ${message.author.username}#${message.author.discriminator}`, message.author.displayAvatarURL())
         message.channel.send({
             embed
         });
     }
-}
-
 }
 
 module.exports.help = {
