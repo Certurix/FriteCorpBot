@@ -58,7 +58,7 @@ module.exports.run = async (bot, message, args, ops, func) => {
             embed
         });
     } else {
-        const embed = new Discord.RichEmbed
+        const embed = new Discord.RichEmbed()
             .setColor('#36393e')
             .setThumbnail(user.displayAvatarURL())
             .setAuthor(`${user.username}#${user.discriminator}`, user.displayAvatarURL())
