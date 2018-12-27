@@ -1,4 +1,4 @@
-module.exports.run = async (client, message, args, color) => {
+
 
 //Define discord-js
 const Discord = require('discord.js');
@@ -7,7 +7,7 @@ const Discord = require('discord.js');
 const moment = require("moment")
 require("moment-duration-format")
 
-exports.run = async (client, message, args, ops, func) => {
+module.exports.run = async (client, message, args, ops, func) => {
     let user;
     if (message.guild.members.get(args[0])) user = message.guild.members.get(args[0])
     else if (message.mentions.users.first()) user = message.mentions.users.first()
