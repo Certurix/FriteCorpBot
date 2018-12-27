@@ -1,0 +1,30 @@
+{
+  "name": "xbox360",
+  "version": "1.0.0",
+  "description": "Bot créé par Panda pour Xbox 360 Community",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/e2f0g9fsdg8g08b8sg0be/a33e9a0ddf0ad9g0s0gt.git"
+  },
+  "keywords": [
+    "xbox"
+  ],
+  "author": "Panda",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/e2f0g9fsdg8g08b8sg0be/a33e9a0ddf0ad9g0s0gt/issues"
+  },
+  "homepage": "https://github.com/e2f0g9fsdg8g08b8sg0be/a33e9a0ddf0ad9g0s0gt#readme",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "ffmpeg-binaries": "^4.0.0",
+    "fs": "0.0.1-security",
+    "opusscript": "0.0.6",
+    "simple-youtube-api": "^5.1.1",
+    "ytdl-core": "^0.28.3"
+  }
+}
