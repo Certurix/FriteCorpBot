@@ -33,11 +33,11 @@ module.exports.run = async (bot, message, args) => {
         
         message.channel.send(embed);
     }).catch((err) => {
-      message.channel.send('L'utilisateur n'a pas été trouvé !');
+      message.channel.send('L\'utilisateur n\'a pas été trouvé !');
       console.error(err);
     });
 }
 
 module.exports.help = {
-    name:"fortnite'
+    name: "fortnite"
 } 
