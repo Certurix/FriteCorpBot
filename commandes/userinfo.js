@@ -7,7 +7,7 @@ const Discord = require('discord.js');
 const moment = require("moment")
 require("moment-duration-format")
 
-module.exports.run = async (client, message, args, ops, func) => {
+module.exports.run = async (bot, message, args, ops, func) => {
     let user;
     if (message.guild.members.get(args[0])) user = message.guild.members.get(args[0])
     else if (message.mentions.users.first()) user = message.mentions.users.first()
@@ -40,7 +40,7 @@ module.exports.run = async (client, message, args, ops, func) => {
     }
     //Discord rich embed
     if (message.guild.members.get(args[0])) {
-        const embed = new Discord.MessageEmbed()
+        const embed = new Discord.RichEmbed()
             .setColor('#36393e')
             .setThumbnail(user.user.displayAvatarURL())
             .setAuthor(`${user.user.username}#${user.user.discriminator}`, user.user.displayAvatarURL())
@@ -58,7 +58,7 @@ module.exports.run = async (client, message, args, ops, func) => {
             embed
         });
     } else {
-        const embed = new Discord.MessageEmbed()
+        const embed = new Discord.RichEmbed
             .setColor('#36393e')
             .setThumbnail(user.displayAvatarURL())
             .setAuthor(`${user.username}#${user.discriminator}`, user.displayAvatarURL())
