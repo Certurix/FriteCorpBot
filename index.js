@@ -124,77 +124,78 @@ bot.on('message', async message => {
 					message.channel.send(`
 __**Sélection de musique:**__
 ${videos.map(video2 => `**${++index} -** ${video2.title}`).join('\n')}
-Veuillez fournir une valeur pour sélectionner l'un des résultats de recherche allant de 1 à 10.
+Veuillez fournir une valeur pour sélectionner l'un des résultats de recherche allant de 1 à 10. Vous avez 30 secondes pour répondre, après le délai écoulé ce sera compté comme annulé
+
 					`);
 					// eslint-disable-next-line max-depth
 					try {
 						var response = await message.channel.awaitMessages(message2 => message2.content > 0 && message2.content < 11, {
 							maxMatches: 1,
-							time: 10000,
+							time: 30000,
 							errors: ['time']
 						});
 					} catch (err) {
 						console.error(err);
-						return message.channel.send('No or invalid value entered, cancelling video selection.');
+						return message.channel.send('Aucune valeur saisie ou valeur invalide, annulant la sélection vidéo.');
 					}
 					var videoIndex = parseInt(response.first().content);
 					var video = await youtube.getVideoByID(videos[videoIndex - 1].id);
 				} catch (err) {
 					console.error(err);
-					return message.channel.send('🆘 I could not obtain any search results.');
+					return message.channel.send('🆘 Je n\'ai pas pu obtenir de résultats de recherche.');
 				}
 			}
 			return handleVideo(video, message, voiceChannel);
 		}
         break;
       case "mskip":
-		if (!message.member.voiceChannel) return message.channel.send('You are not in a voice channel!');
-		if (!serverQueue) return message.channel.send('There is nothing playing that I could skip for you.');
+		if (!message.member.voiceChannel) return message.channel.send('Vous n\'êtes pas dans un canal vocal !');
+		if (!serverQueue) return message.channel.send('Il n\'y a rien dans la file d\'attente. Faites f!mplay (lien ou nom');
 		serverQueue.connection.dispatcher.end('Skip command has been used!');
 		return undefined;
         break;
       case "mstop":
-		if (!message.member.voiceChannel) return message.channel.send('You are not in a voice channel!');
-		if (!serverQueue) return message.channel.send('There is nothing playing that I could stop for you.');
+		if (!message.member.voiceChannel) return message.channel.send('Vous n\'êtes pas dans un canal vocal !');
+		if (!serverQueue) return message.channel.send('Il n\'y a rien dans la file d\'attente. Faites f!mplay (lien ou nom');
 		serverQueue.songs = [];
 		serverQueue.connection.dispatcher.end('Stop command has been used!');
 		return undefined;
 break;
       case "mvolume":
-		if (!message.member.voiceChannel) return message.channel.send('You are not in a voice channel!');
-		if (!serverQueue) return message.channel.send('There is nothing playing.');
-		if (!args[1]) return message.channel.send(`The current volume is: **${serverQueue.volume}**`);
+		if (!message.member.voiceChannel) return message.channel.send('Vous n\'êtes pas dans un canal vocal !');
+		if (!serverQueue) return message.channel.send('Il n\'y a rien dans la file d\'attente. Faites f!mplay (lien ou nom');
+		if (!args[1]) return message.channel.send(`Le volume actuel est de **${serverQueue.volume}**`);
 		serverQueue.volume = args[1];
 		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 5);
-		return message.channel.send(`I set the volume to: **${args[1]}**`);
+		return message.channel.send(`Volume mis à **${args[1]}**`);
 break;
       case "mnp":
-		if (!serverQueue) return message.channel.send('There is nothing playing.');
-		return message.channel.send(`🎶 Now playing: **${serverQueue.songs[0].title}**`);
+		if (!serverQueue) return message.channel.send('Il n\'y a rien dans la file d\'attente. Faites f!mplay (lien ou nom');
+		return message.channel.send(`🎶 Lecture en cours de  **${serverQueue.songs[0].title}**`);
 break;
       case "mqueue":
-		if (!serverQueue) return message.channel.send('There is nothing playing.');
+		if (!serverQueue) return message.channel.send('Il n\'y a rien dans la file d\'attente. Faites f!mplay (lien ou nom');
 		return message.channel.send(`
-__**Song queue:**__
+__**Files d'attente des musiques:**__
 ${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}
-**Now playing:** ${serverQueue.songs[0].title}
+**Lecture en cours :** ${serverQueue.songs[0].title}
 		`);
 break;
       case "mpause":
 		if (serverQueue && serverQueue.playing) {
 			serverQueue.playing = false;
 			serverQueue.connection.dispatcher.pause();
-			return message.channel.send('⏸ Paused the music for you!');
+			return message.channel.send('⏸ La musique à été mise en pause.');
 		}
-		return message.channel.send('There is nothing playing.');
+		return message.channel.send('Il n\'y a rien dans la file d\'attente. Faites f!mplay (lien ou nom)');
 break;
       case "mresume":
 		if (serverQueue && !serverQueue.playing) {
 			serverQueue.playing = true;
 			serverQueue.connection.dispatcher.resume();
-			return message.channel.send('▶ Resumed the music for you!');
+			return message.channel.send('▶ La musique à été reprise.');
 		}
-		return message.channel.send('There is nothing playing.');
+		return message.channel.send('Il n\'y a rien dans la file d\'attente. Faites f!mplay (lien ou nom)');
 	
 
 	return undefined;
