@@ -21,8 +21,9 @@ const Discord = require('discord.js')
     const embed3 = new Discord.RichEmbed()
     .setTitle("Commandes utilitaires")
     .setDescription("Voici les commandes utilitaires.")
-    .addField("credits", "Crédits dédié au bot.")
     .addField("botinfo", "Affiche les informations du bot")
+    .addField("membercount", "Affiche des informations lié aux membres du serveur")
+    .addField("ping", "Permet de voir le ping du bot.")
 
 
     message.author.send(embed)

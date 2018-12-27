@@ -24,6 +24,7 @@
     "ffmpeg-binaries": "^4.0.0",
     "fs": "0.0.1-security",
     "opusscript": "0.0.6",
+    "os": "^0.1.1",
     "simple-youtube-api": "^5.1.1",
     "ytdl-core": "^0.28.3"
   }

@@ -101,10 +101,10 @@ bot.on('message', async message => {
 		if (!voiceChannel) return message.channel.send('Vous devez être dans un salon vocal pour pouvoir lancer une musique');
 		var permissions = voiceChannel.permissionsFor(message.client.user);
 		if (!permissions.has('CONNECT')) {
-			return message.channel.send('I cannot connect to your voice channel, make sure I have the proper permissions!');
+			return message.channel.send('Je ne peux pas me connecter au salon vocal, merci de vérifier mes permissions.');
 		}
 		if (!permissions.has('SPEAK')) {
-			return message.channel.send('I cannot speak in this voice channel, make sure I have the proper permissions!');
+			return message.channel.send('Je ne peux pas parler dans le salon vocal, erci de vérifier mes permissions.');
 		}
       if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
 			var playlist = await youtube.getPlaylist(url);
@@ -113,7 +113,7 @@ bot.on('message', async message => {
 				var video2 = await youtube.getVideoByID(video.id); // eslint-disable-line no-await-in-loop
 				await handleVideo(video2, message, voiceChannel, true); // eslint-disable-line no-await-in-loop
 			}
-			return message.channel.send(`✅ Playlist: **${playlist.title}** has been added to the queue!`);
+			return message.channel.send(`✅ La playlist **${playlist.title}** à été ajouté à la file d'attente.`);
 		} else {
 			try {
 				var video = await youtube.getVideo(url);
