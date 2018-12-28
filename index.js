@@ -29,14 +29,14 @@ fs.readdir("./commandes/", (err, files) => {
   });
 
 bot.on('ready', () => { 
-    bot.user.setActivity("=help | Créé par Certurix")
+    bot.user.setActivity("gérer Frite’s Corp.")
     console.log("▬▬▬▬▬▬▬▬▬▬▬▬\n BOT EN LIGNE \n▬▬▬▬▬▬▬▬▬▬▬▬")
 })
 
 
 bot.on('guildMemberAdd', member => {
 const channel = bot.channels.find('id', '525378385816584233')
-const channelmsg = `:arrow_right: ${member} viens de rejoindre la communauté, bienvenue à lui.`
+const channelmsg = `<:480751145002991626:525382597690523653> ${member} viens de rejoindre la communauté, bienvenue à lui.`
 if(!channel) return; // Si on ne trouve pas le channel, on ne fait rien.
 
 const mpmsg = `Bienvenue ${member}, installe toi bien parmis nous, vas lire le règlement pour éviter d'enfreindre  l'une des règles. Si tu souhaite avoir de l'aide sur un addon de Frite, va dans le salon <#509340358983811097>.`
