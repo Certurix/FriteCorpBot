@@ -24,6 +24,13 @@ const Discord = require('discord.js')
     .addField("botinfo", "Affiche les informations du bot")
     .addField("membercount", "Affiche des informations lié aux membres du serveur")
     .addField("ping", "Permet de voir le ping du bot.")
+    .addField("hastebin", "Permet de mettre en ligne du texte/code ")
+
+    const embed4 = new Discord.RichEmbed()
+    .setTitle("Commandes développeur")
+    .setDescription("Commandes secrètes du bot")
+    .addField("eval", "Permet d'executer du code sur le bot")
+    .addField("stop", "Eteint tous les processus du bot")
 
 
     message.author.send(embed)
@@ -33,6 +40,9 @@ const Discord = require('discord.js')
         message.author.send(embed2)
     } else return;
 
+    if(message.author.id == ("420902183350042627")) {
+        message.author.send(embed4)
+    }
 
 
 };
