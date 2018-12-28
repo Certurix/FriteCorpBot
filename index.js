@@ -3,11 +3,11 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
-const prefix = "f!"
+const prefix = "="
 const token = process.env.TOKEN
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
-const youtube = new YouTube("AIzaSyAlP12UFtynoOijWpkp688IUP0P1PWnFqA");
+const youtube = new YouTube(process.env.YOUTUBE);
 const queue = new Map();
 
 
@@ -29,7 +29,7 @@ fs.readdir("./commandes/", (err, files) => {
   });
 
 bot.on('ready', () => { 
-    bot.user.setActivity("manger des frites | Créé par Certurix")
+    bot.user.setActivity("=help | Créé par Certurix")
     console.log("▬▬▬▬▬▬▬▬▬▬▬▬\n BOT EN LIGNE \n▬▬▬▬▬▬▬▬▬▬▬▬")
 })
 
