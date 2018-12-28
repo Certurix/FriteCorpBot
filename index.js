@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
-const prefix = "="
+const prefix = "f!"
 const token = process.env.TOKEN
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
@@ -35,22 +35,22 @@ bot.on('ready', () => {
 
 
 bot.on('guildMemberAdd', member => {
-const channel = bot.channels.find('id', '525378385816584233')
+const channel = bot.channels.find('id', '509059985767137301')
 const channelmsg = `<:480751145002991626:525382597690523653> ${member} viens de rejoindre la communauté, bienvenue à lui.`
 if(!channel) return; // Si on ne trouve pas le channel, on ne fait rien.
 
 const mpmsg = `Bienvenue ${member}, installe toi bien parmis nous, vas lire le règlement pour éviter d'enfreindre  l'une des règles. Si tu souhaite avoir de l'aide sur un addon de Frite, va dans le salon <#509340358983811097>.`
 
-bot.guilds.get("525377074584879110").channels.get("525378385816584233").send(channelmsg)
+bot.guilds.get("508964194016690197").channels.get("509059985767137301").send(channelmsg)
 bot.users.get(member.id).send(mpmsg)
 });
 
 bot.on('guildMemberRemove', member => {
-    const channel = bot.channels.find('id', '525378385816584233')
+    const channel = bot.channels.find('id', '509059985767137301')
     const channelmsg = `<:RedArrow:525382568263155749> ${member} viens de quitter la communauté, bonne continuation à lui.`
     if(!channel) return; // Si on ne trouve pas le channel, on ne fait rien.
     
-    bot.guilds.get("525377074584879110").channels.get("525378385816584233").send(channelmsg)
+    bot.guilds.get("508964194016690197").channels.get("509059985767137301").send(channelmsg)
     });
 
 bot.on('error', err => {
@@ -72,8 +72,8 @@ bot.on('message', message => {
 })
 
 bot.on('messageDelete', r => {
-    const channel = bot.channels.find('id', '525378404204150795')
-    if(!channel) return bot.users.find('id', '525378769360519168').send("Il semblerait qu'il y ait un problème avec le salon de logs. Apparement, il a été supprimé.")
+    const channel = bot.channels.find('id', '528331365658132482')
+    if(!channel) return bot.users.find('id', '420902183350042627').send("Il semblerait qu'il y ait un problème avec le salon de logs. Apparement, il a été supprimé.")
     const messageDeleteembed = new Discord.RichEmbed()
     .setDescription("Message supprimé")
     .setColor('RANDOM')
@@ -85,7 +85,7 @@ bot.on('messageDelete', r => {
 bot.on('message', msg => {
     if(msg.content.includes("<@310045978923368448>")) {
         const user = msg.author
-        return msg.channel.send(user+", merci de bien vouloir contacter le <@&517789010299715604> pour toutes demandes et d'éviter à l'avenir de mentionner ``@Frite``.")
+        return msg.channel.send(user+", merci de bien vouloir contacter le ``@Staff`` pour toutes demandes et d'éviter à l'avenir de mentionner ``@Frite``.")
     }
 })
 
