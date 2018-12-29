@@ -59,7 +59,7 @@ bot.on('error', err => {
     .setTitle("Erreur")
     .setDescription(err)
     .setTimestamp()
-    bot.channels.find('id', '525378404204150795').send(error)
+    bot.channels.find('id', '528331365658132482').send(error)
 })
 
 bot.on('message', message => {
@@ -79,7 +79,7 @@ bot.on('messageDelete', r => {
     .setColor('RANDOM')
     .addField("Message", r)
     .addField("Auteur", r.author)
-
+channel.send(messageDeleteembed)
 })
 
 bot.on('message', msg => {
