@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const botconfig = require("../botconfig");
 module.exports.run = async (bot, msg) => {
   const params = msg.content.split(" ");
 const args = msg.content.split(" ").slice(1);
