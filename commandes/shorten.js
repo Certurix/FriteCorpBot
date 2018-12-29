@@ -7,13 +7,13 @@ module.exports.run = (client, message, args) => {
   // The command will take one require argument, and one optional (link, title)
  
   // We also want to check if they typed anything at all, if not run this
-  if (!args[0]) return message.channel.send('**Proper Usage: &shorten <URL> [title]**')
+  if (!args[0]) return message.channel.send('**Utilisation: f!shorten <URL> [titre]**')
  
   // First, we need to check if they entered an optional title
   if (!args[1]) { // If the second argument in the message is undefined, run this
    
     shorten.shorten(args[0], function(res) { // This will run the shorten function and pass it 'res'
-      if (res.startsWith('Error:')) return message.channel.send('**Please enter a valid URL**'); // The only possible error here would be that it's not a valid URL.
+      if (res.startsWith('Error:')) return message.channel.send('**Veuillez entrer une URL valide.**'); // The only possible error here would be that it's not a valid URL.
      const embed = new Discord.RichEmbed()
      .setDescription(res)
       message.channel.send(embed); // If no error encountered, it will return with the response in the res variable
