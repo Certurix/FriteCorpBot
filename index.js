@@ -9,6 +9,7 @@ const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const youtube = new YouTube(process.env.YOUTUBE);
 const queue = new Map();
+const typechannel = ""
 
 
 // On charge les commandes ICI
@@ -82,6 +83,51 @@ bot.on('messageDelete', r => {
     .addField("Channel", r.channel
 channel.send(messageDeleteembed)
 })
+
+
+
+bot.on("channelCreate", async channel => {
+	
+	if(channel.type === "text") {
+	typechannel = "texte"	
+	}
+	
+	if(channel.type === "voice") {
+	typechannel = "vocal"
+	} else {
+		typechannel = "autre"
+	}
+	var logs = channel.guild.channels.find(c => c.name === 'logs');
+	if (!logs) return console.log("Il semblerait qu'il y ait un problème avec le salon de logs. Apparement, il a été supprimé.");
+	const cembed = new Discord.RichEmbed()
+		.setTitle("Channel créé")
+		.setColor("RANDOM")
+		.setDescription(`Un channel  de type **${channel.type}**, avec le nom de **${channel.name}**, à été créé`)
+		.setTimestamp(new Date());
+	logs.send(cembed)
+});
+
+bot.on("channelDelete", async channel => {
+	
+	if(channel.type === "text") {
+	typechannel = "texte"	
+	}
+	
+	if(channel.type === "voice") {
+	typechannel = "vocal"
+	} else {
+		typechannel = "autre"
+	}
+	var logs = channel.guild.channels.find(c => c.name === 'logs');
+	if (!logs) return console.log("Il semblerait qu'il y ait un problème avec le salon de logs. Apparement, il a été supprimé.");
+	
+	const cembed = new Discord.RichEmbed()
+		.setTitle("Channel supprimé")
+		.setColor("RANDOM")
+		.setDescription(`Un channel  de type **${channel.type}**, avec le nom de **${channel.name}**, à été supprimé`)
+		.setTimestamp(new Date())
+	logs.send(cembed)
+});
 
 bot.on('message', msg => {
     if(msg.content.includes("<@310045978923368448>")) {
