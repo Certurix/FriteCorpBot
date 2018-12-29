@@ -80,7 +80,7 @@ bot.on('messageDelete', r => {
     .setColor('RANDOM')
     .addField("Message", r)
     .addField("Auteur du message", r.author)
-    .addField("Channel", r.channel
+    .addField("Channel", r.channel)
 channel.send(messageDeleteembed)
 })
 
