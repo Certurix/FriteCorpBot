@@ -9,7 +9,6 @@ const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const youtube = new YouTube(process.env.YOUTUBE);
 const queue = new Map();
-const typechannel = ""
 
 
 // On charge les commandes ICI
@@ -87,7 +86,7 @@ channel.send(messageDeleteembed)
 
 
 bot.on("channelCreate", async channel => {
-	
+	let typechannel = ""
 	if(channel.type === "text") {
 	typechannel = "texte"	
 	}
@@ -108,7 +107,7 @@ bot.on("channelCreate", async channel => {
 });
 
 bot.on("channelDelete", async channel => {
-	
+	let typechannel = ""
 	if(channel.type === "text") {
 	typechannel = "texte"	
 	}
