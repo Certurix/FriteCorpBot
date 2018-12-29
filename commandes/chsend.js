@@ -1,6 +1,6 @@
 module.exports.run = async (bot, message) => {
     const Discord = require('discord.js')
-    if (message.author.id !== "392441246238375936") return message.channel.send(":x:")
+    if (message.author.id !== "420902183350042627") return message.channel.send(":x:")
     var args = message.content.split(" ").slice(0)
     var Rargs = message.content.split(" ").slice(2).join(" ")
     var channelID = args[1]
