@@ -2,14 +2,14 @@ const ms = require('ms');
 module.exports.run = async (client, message, args) => {
   if (!client.lockit) client.lockit = [];
   let time = args.join(' ');
-  let validUnlocks = ['release', 'unlock', 'stop', 'off', 'quit'];
-  if (!time) return message.reply('Specify a time to lockdown the channel in minute (m) seconds (s) or hours (h)');
+  let validUnlocks = ['liberer', 'deverouiller', 'stop', 'off', 'quit'];
+  if (!time) return message.channel.send('Spécifiez une heure pour verrouiller le canal en minutes (m) secondes (s) ou heures (h)');
 
   if (validUnlocks.includes(time)) {
     message.channel.overwritePermissions(message.guild.id, {
       SEND_MESSAGES: null
     }).then(() => {
-      message.channel.sendMessage('The lockdown has ended.');
+      message.channel.sendMessage('Le verrouillage du canal est terminé.');
       clearTimeout(client.lockit[message.channel.id]);
       delete client.lockit[message.channel.id];
     }).catch(error => {
@@ -19,12 +19,12 @@ module.exports.run = async (client, message, args) => {
     message.channel.overwritePermissions(message.guild.id, {
       SEND_MESSAGES: false
     }).then(() => {
-      message.channel.sendMessage(`The channel has been lockdown for ${ms(ms(time), { long:true })}`).then(() => {
+      message.channel.sendMessage(`Le canal a été verrouillé pendant ${ms(ms(time), { long:true })}`).then(() => {
 
         client.lockit[message.channel.id] = setTimeout(() => {
           message.channel.overwritePermissions(message.guild.id, {
             SEND_MESSAGES: null
-          }).then(message.channel.sendMessage('The lockdown has ended.')).catch(console.error);
+          }).then(message.channel.sendMessage('Le verrouillage du canal est terminé.')).catch(console.error);
           delete client.lockit[message.channel.id];
         }, ms(time));
 
