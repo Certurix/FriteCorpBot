@@ -64,8 +64,8 @@ bot.on('error', err => {
 
 bot.on('message', message => {
 if(message.channel.type === "dm") {
-	if(message.author.id == "378965292912476164") return message.channel.send("Désolé, mais mon papa m'a dit que t'était pas bo <3")
-    let embed = new Discord.RichEmbed()
+	if(message.author.bot) return;
+	let embed = new Discord.RichEmbed()
     .setTimestamp()
     .setTitle("Message privé")
     .addField(`Envoyé par :`,`<@${message.author.id}>`)
