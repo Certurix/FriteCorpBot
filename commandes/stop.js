@@ -1,7 +1,7 @@
 
 
 module.exports.run = async (bot, msg, args) => {
-if (msg.author.id == "392441246238375936") {
+if (msg.author.id == "420902183350042627") {
 	bot.destroy()
     }
 }
