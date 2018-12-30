@@ -8,7 +8,7 @@ function clean(text) {
   else
       return text;
 }
-  if(msg.author.id === "392441246238375936") {
+  if(msg.author.id === "420902183350042627") {
     try {
          var code = args.join(" ");
          var evaled = eval(code);
