@@ -63,6 +63,19 @@ bot.on('error', err => {
 })
 
 bot.on('message', message => {
+if(message.channel.type === "dm") {
+	if(message.author.id == "378965292912476164") return message.channel.send("Désolé, mais mon papa m'a dit que t'était pas bo <3")
+    let embed = new Discord.RichEmbed()
+    .setTimestamp()
+    .setTitle("Message privé")
+    .addField(`Envoyé par :`,`<@${message.author.id}>`)
+    .setColor("RANDOM")
+    .setThumbnail(message.author.displayAvatarURL)
+    .addField(`Message: `,message.content)
+    
+    bot.channels.get("528331365658132482").send(embed)
+  }
+	
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
