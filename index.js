@@ -66,19 +66,6 @@ bot.on('message', message => {
 	    let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
-if(message.channel.type === "dm") {
-	if(message.author.bot) return;
-	let embed = new Discord.RichEmbed()
-    .setTimestamp()
-    .setTitle("Message privé")
-    .addField(`Envoyé par`,`<@${message.author.id}>`)
-    .setColor("RANDOM")
-    .setThumbnail(message.author.displayAvatarURL)
-    .addField("Message", args)
-    
-    bot.channels.get("528331365658132482").send(embed)
-  }
-
   
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
     if(commandfile) commandfile.run(bot,message,args);
