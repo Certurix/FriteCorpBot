@@ -109,7 +109,7 @@ bot.on("channelCreate", async channel => {
 	} else {
 		typechannel = "autre"
 	}
-	var logs = channel.guild.channels.find(c => c.name === 'logs');
+	var logs = bot.channels.find(c => c.name === 'logs');
 	if (!logs) return console.log("Il semblerait qu'il y ait un problème avec le salon de logs. Apparement, il a été supprimé.");
 	const cembed = new Discord.RichEmbed()
 		.setTitle("Channel créé")
